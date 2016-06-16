@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ae000000">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <RadioButton
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:button="@null"
+            android:layout_gravity="center_horizontal"
+            android:text="分享给我的文件"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/securitys_navcomenormal_icon"
+            android:textColor="@android:color/white"/>
+   <View
+       android:layout_width="wrap_content"
+       android:layout_height="1dp"
+       android:background="#aeffffff"/>
+
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:text="我分享的文件"
+            android:padding="10dp"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/securitys_navoutnormal_icon"
+            android:textColor="@android:color/white"/>
+
+    </RadioGroup>
+</LinearLayout>

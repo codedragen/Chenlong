@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+
+<LinearLayout
+    android:fitsSystemWindows="true"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <FrameLayout
+
+
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:id="@+id/container"
+       >
+
+
+
+   </FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="@drawable/tabbg"
+        >
+        <RadioButton
+            android:id="@+id/tab_first"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="企业文档库"
+            android:drawableTop="@drawable/tab_drawable_selector"
+            android:button="@null"
+            android:paddingTop="5dp"
+            android:textColor="@drawable/tab_color_selector"
+            android:gravity="bottom|center_horizontal"
+            />
+        <RadioButton
+            android:id="@+id/tab_second"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="安全分享"
+            android:paddingTop="5dp"
+            android:button="@null"
+            android:textColor="@drawable/tab_color_selector"
+            android:gravity="bottom|center_horizontal"
+            android:drawableTop="@drawable/secondtab_drawable_selector"
+            />
+        <RadioButton
+            android:id="@+id/tab_thrid"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="我的文档"
+            android:paddingTop="5dp"
+            android:button="@null"
+            android:textColor="@drawable/tab_color_selector"
+            android:gravity="bottom|center_horizontal"
+            android:drawableTop="@drawable/thridtab_drawable_selector"
+            />
+        <RadioButton
+            android:id="@+id/tab_fouth"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="个人中心"
+            android:paddingTop="5dp"
+            android:button="@null"
+            android:textColor="@drawable/tab_color_selector"
+            android:gravity="bottom|center_horizontal"
+            android:drawableTop="@drawable/fouthtab_drawable_selector"
+            />
+    </RadioGroup>
+</LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:layout_width="200dp"
+        android:fitsSystemWindows="false"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        app:headerLayout="@layout/navigationhead"
+        app:menu="@menu/navigationmenu"
+
+       />
+</android.support.v4.widget.DrawerLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="风险评估"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:background="#696969"/>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:background="#33666666">
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:text="分享"
+             android:padding="5dp"
+             android:gravity="center"
+             android:drawableTop="@mipmap/tabbar_share_normal_icon"/>
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:text="重命名"
+             android:padding="5dp"
+             android:gravity="center"
+             android:drawableTop="@mipmap/com_btn_rename"/>
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:text="删除"
+             android:padding="5dp"
+             android:gravity="center"
+             android:drawableTop="@mipmap/com_btn_del"/>
+
+     </LinearLayout>
+    <LinearLayout
+        android:background="#33666666"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="属性"
+            android:gravity="center"
+            android:padding="5dp"
+            android:drawableTop="@mipmap/com_btn_attr"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="取消"
+        android:padding="15dp"
+        android:drawableLeft="@mipmap/com_btn_close"
+        android:layout_gravity="center"
+        android:drawablePadding="5dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20sp"/>
+</LinearLayout>

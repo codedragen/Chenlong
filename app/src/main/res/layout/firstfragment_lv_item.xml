@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/com_folder_icon"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:id="@+id/filename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重要文件备份"
+        android:layout_toRightOf="@id/iv_icon"
+        android:layout_alignTop="@id/iv_icon"
+        android:textSize="15dp"
+        android:textColor="@android:color/black"
+        />
+          <TextView
+              android:id="@+id/date"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="2016-12-03"
+              android:layout_alignLeft="@id/filename"
+              android:layout_below="@id/filename"
+              android:layout_marginTop="8dp"
+              android:textSize="8sp"
+              />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15:29:30"
+        android:textSize="8sp"
+        android:id="@+id/time"
+        android:layout_toRightOf="@id/date"
+        android:layout_alignTop="@id/date"
+        android:layout_marginLeft="15dp"/>
+
+    <ImageView
+        android:id="@+id/operate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/com_operate_icon"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        />
+    <TextView
+        android:id="@+id/sender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送人:陈龙"
+        android:textSize="8sp"
+        android:layout_toRightOf="@id/time"
+        android:layout_alignTop="@id/time"
+        android:layout_marginLeft="30dp"/>
+    <CheckBox
+        android:id="@+id/check"
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+
+       />
+
+</RelativeLayout>

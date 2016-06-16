@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <android.support.v7.widget.Toolbar
+        android:fitsSystemWindows="true"
+        android:id="@+id/mydocfrag_toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_height="?android:attr/actionBarSize"
+        app:navigationIcon="@mipmap/navibar_trans_icon"
+        >
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的文档"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:textColor="@android:color/white"/>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_mydoc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ListView
+            android:id="@+id/mydocFra_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>
