@@ -10,6 +10,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class ShareActivity extends AppCompatActivity implements Toolbar.OnMenuIt
     private Toolbar toolbar;
     String [] name={"嬴政","刘彻","曹操","李世民","朱元璋","成吉思汗","爱新觉罗·弘历","赵匡胤","努尔哈赤","多尔衮","武则天","康熙","顺治","孔子","老子","孟子","三皇五帝"};
      String [] group={"开发者","移动组","标密小组","海南电信小组","文档安全组"};
-
+    WebView webView;
     private RecyclePersonAdapter adapter;
     private RecyclePersonAdapter groupadapter;
 
