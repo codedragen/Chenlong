@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +22,7 @@ import securedoc.eetrust.com.chenlong.adapter.RecyclePersonAdapter;
 /**
  * Created by eetrust on 16/6/14.
  */
-public class ShareActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+public class ShareActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener, View.OnClickListener {
 
     private RecyclerView recycle_sharedoc;
     private RecyclerView recycle_shareperson;
@@ -58,11 +59,17 @@ public class ShareActivity extends AppCompatActivity implements Toolbar.OnMenuIt
 
         toolbar= (Toolbar) findViewById(R.id.share_tool);
         toolbar.inflateMenu(R.menu.share_menu);
+        toolbar.setNavigationOnClickListener(this);
         toolbar.setOnMenuItemClickListener(this);
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        finish();
     }
 }

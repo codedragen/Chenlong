@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.RadioGroup;
 
+import java.util.List;
+
 import securedoc.eetrust.com.chenlong.fragment.FirstFragment;
 import securedoc.eetrust.com.chenlong.fragment.MyDocFragment;
 import securedoc.eetrust.com.chenlong.fragment.PersonalCenterFragment;
@@ -33,12 +35,22 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         setContentView(R.layout.activity_home);
         tab_layout = (RadioGroup) findViewById(R.id.tab_layout);
         tab_layout.check(R.id.tab_first);
-
+        if(firstFragment==null)
         firstFragment = new FirstFragment();
+        if (secondFragment==null)
         secondFragment = new SecondFragment();
+        if (personalCenterFragment==null)
         personalCenterFragment = new PersonalCenterFragment();
+        if (mydocFragment==null)
         mydocFragment=new MyDocFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, firstFragment).add(R.id.container, secondFragment).add(R.id.container, personalCenterFragment).add(R.id.container,mydocFragment).hide(personalCenterFragment).show(firstFragment).hide(secondFragment).hide(mydocFragment).commit();
+
+       if (savedInstanceState!=null) {
+           //getSupportFragmentManager().beginTransaction().add(R.id.container, firstFragment).add(R.id.container, secondFragment).add(R.id.container, personalCenterFragment).add(R.id.container, mydocFragment).hide(personalCenterFragment).show(firstFragment).hide(secondFragment).hide(mydocFragment).commit();
+           //List<Fragment> list= getSupportFragmentManager().getFragments();
+           showFragment(firstFragment);
+       }else
+           getSupportFragmentManager().beginTransaction().add(R.id.container, firstFragment).add(R.id.container, secondFragment).add(R.id.container, personalCenterFragment).add(R.id.container,mydocFragment).hide(personalCenterFragment).show(firstFragment).hide(secondFragment).hide(mydocFragment).commit();
+
         tab_layout.setOnCheckedChangeListener(this);
 
 
@@ -61,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 break;
            case  R.id.tab_thrid:
                if (mydocFragment.isHidden())
-               showFragment(mydocFragment);
+                 showFragment(mydocFragment);
                break;
 
         }
