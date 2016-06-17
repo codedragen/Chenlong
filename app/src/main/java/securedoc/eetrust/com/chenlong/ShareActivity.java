@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import securedoc.eetrust.com.chenlong.R;
 import securedoc.eetrust.com.chenlong.adapter.RecyclePersonAdapter;
+import securedoc.eetrust.com.chenlong.adapter.RecyclerDocAdapter;
 
 /**
  * Created by eetrust on 16/6/14.
@@ -34,6 +36,7 @@ public class ShareActivity extends AppCompatActivity implements Toolbar.OnMenuIt
     WebView webView;
     private RecyclePersonAdapter adapter;
     private RecyclePersonAdapter groupadapter;
+    private RecyclerDocAdapter docadapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,11 +56,18 @@ public class ShareActivity extends AppCompatActivity implements Toolbar.OnMenuIt
         for (int i=0;i<10;i++){
             listgroup.add(group[(int) (Math.random()*group.length)]);
         }
-     groupadapter=new RecyclePersonAdapter(listgroup,this);
+        groupadapter=new RecyclePersonAdapter(listgroup,this);
         recycle_sharegroup.setLayoutManager(new GridLayoutManager(this,1,GridLayoutManager.HORIZONTAL,false));
         recycle_sharegroup.setItemAnimator(new DefaultItemAnimator());
         recycle_sharegroup.setAdapter(groupadapter);
-
+        List<String> listfile=new ArrayList<String>();
+        for (int i=0;i<10;i++){
+            listfile.add("文档"+i+".doc");
+        }
+        docadapter=new RecyclerDocAdapter(listfile);
+        recycle_sharedoc.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recycle_sharedoc.setItemAnimator(new DefaultItemAnimator());
+        recycle_sharedoc.setAdapter(docadapter);
         toolbar= (Toolbar) findViewById(R.id.share_tool);
         toolbar.inflateMenu(R.menu.share_menu);
         toolbar.setNavigationOnClickListener(this);

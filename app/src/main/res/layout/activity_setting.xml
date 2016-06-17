@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    android:fitsSystemWindows="true"
-   >
+    android:fitsSystemWindows="true">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorAccent"
+        android:id="@+id/setactivity_toolbar"
+        app:navigationIcon="@mipmap/com_back_icon"
          >
         <TextView
             android:layout_width="wrap_content"
@@ -22,8 +25,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@android:color/white">
-
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:text="当前服务器配置："
+             android:gravity="center_vertical"
+             android:background="#f5f5f5"
+             />
+        <ListView
+            android:id="@+id/lv_set"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
     </LinearLayout>
 
 </LinearLayout>

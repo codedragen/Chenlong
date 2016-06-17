@@ -6,8 +6,9 @@
      android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-
    >
+
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
@@ -22,109 +23,12 @@
             android:textSize="25sp"
             android:layout_gravity="center"/>
     </android.support.v7.widget.Toolbar>
-    <TextView
+
+    <ListView
+        android:id="@+id/personinfo_lv"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:drawableLeft="@mipmap/personal_per_icon"
-        android:drawablePadding="10dp"
-        android:paddingLeft="12dp"
-        android:clickable="true"
-        android:background="@drawable/clickbg"
-        android:drawableRight="@mipmap/personal_arrow_icon"
-        android:paddingRight="12dp"
-        android:textColor="@android:color/black"
-        android:text="个人信息"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#bdbdbd"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:drawableLeft="@mipmap/personal_version_icon"
-        android:drawablePadding="10dp"
-        android:paddingLeft="12dp"
-        android:clickable="true"
-        android:background="@drawable/clickbg"
-        android:drawableRight="@mipmap/personal_arrow_icon"
-        android:paddingRight="12dp"
-        android:textColor="@android:color/black"
-        android:text="版本信息"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#bdbdbd"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/clickbg"
-        android:drawableLeft="@mipmap/personal_cache_icon"
-        android:drawablePadding="10dp"
-        android:paddingLeft="12dp"
-        android:drawableRight="@mipmap/personal_arrow_icon"
-        android:paddingRight="12dp"
-        android:clickable="true"
-        android:textColor="@android:color/black"
-        android:text="清除缓存"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#bdbdbd"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:drawableLeft="@mipmap/personal_pwd_icon"
-        android:drawablePadding="10dp"
-        android:paddingLeft="12dp"
-        android:background="@drawable/clickbg"
-        android:drawableRight="@mipmap/personal_arrow_icon"
-        android:paddingRight="12dp"
-        android:clickable="true"
-        android:textColor="@android:color/black"
-        android:text="修改密码"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#bdbdbd"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:drawableLeft="@mipmap/personal_set_icon"
-        android:drawablePadding="10dp"
-        android:paddingLeft="12dp"
-        android:background="@drawable/clickbg"
-        android:drawableRight="@mipmap/personal_arrow_icon"
-        android:paddingRight="12dp"
-        android:clickable="true"
-        android:textColor="@android:color/black"
-        android:text="设置"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#bdbdbd"/>
-    <TextView
-        android:id="@+id/exit"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:drawableLeft="@mipmap/personal_exit_icon"
-        android:drawablePadding="10dp"
-        android:paddingLeft="12dp"
-        android:clickable="true"
-        android:background="@drawable/clickbg"
-        android:drawableRight="@mipmap/personal_arrow_icon"
-        android:paddingRight="12dp"
-        android:textColor="@android:color/black"
-        android:text="退出登录"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#bdbdbd"/>
+        android:layout_height="match_parent"/>
+
 
 
 </LinearLayout>

@@ -32,12 +32,12 @@
         android:background="#e3e5f0">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical"
             >
 
@@ -89,6 +89,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/sharedoc"
                 android:layout_marginTop="1dp"
+                android:paddingLeft="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white" />
@@ -143,7 +144,8 @@
                 android:gravity="start"
                 android:layout_marginTop="1dp"
                 android:hint="   安全分享内容描述,字数限制到300"
-                android:lines="5" />
+                android:lines="7"
+                android:textSize="15sp"/>
 
 
         </LinearLayout>
