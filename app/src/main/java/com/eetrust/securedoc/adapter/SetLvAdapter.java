@@ -1,13 +1,15 @@
-package securedoc.eetrust.com.chenlong.adapter;
+package com.eetrust.securedoc.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.eetrust.securedoc.R;
+
 import java.util.List;
 
-import securedoc.eetrust.com.chenlong.R;
+
 
 /**
  * Created by android on 2016/6/17.

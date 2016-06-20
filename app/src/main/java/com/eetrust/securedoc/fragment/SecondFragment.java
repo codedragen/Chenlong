@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong.fragment;
+package com.eetrust.securedoc.fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,13 +15,14 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.eetrust.securedoc.R;
+import com.eetrust.securedoc.activity.ShareActivity;
+import com.eetrust.securedoc.adapter.SecondFragAdapter;
+import com.eetrust.securedoc.bean.FileBean;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import securedoc.eetrust.com.chenlong.R;
-import securedoc.eetrust.com.chenlong.adapter.SecondFragAdapter;
-import securedoc.eetrust.com.chenlong.bean.FileBean;
-import securedoc.eetrust.com.chenlong.ShareActivity;
 
 
 /**

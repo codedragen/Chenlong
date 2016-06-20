@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong.ui;
+package com.eetrust.securedoc.ui;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
-import securedoc.eetrust.com.chenlong.R;
+import securedoc.eetrust.com.eetrust.R;
 
 /**
  * Created by long on 2016/6/10.

@@ -1,8 +1,9 @@
-package securedoc.eetrust.com.chenlong.adapter;
+package com.eetrust.securedoc.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,27 +15,42 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+
+import com.eetrust.securedoc.R;
+import com.eetrust.securedoc.bean.FileBean;
+import com.eetrust.securedoc.ui.FileDialog;
+
 import java.util.List;
 
-import securedoc.eetrust.com.chenlong.R;
-import securedoc.eetrust.com.chenlong.bean.FileBean;
+
+
 
 /**
  * Created by long on 2016/6/10.
  */
-public class SecondFragAdapter extends BaseAdapter {
+public class FirstFragAdapter extends BaseAdapter {
     private final Context context;
     private final List<FileBean> data;
     private  boolean checkMode;
-    View popuViewBottom;
-    private PopupWindow popupWindowBottom;
+    PopupWindow popupWindow;
+    View popuView;
+    TextView tvdel;
+    private AlertDialog dialog;
 
-    public SecondFragAdapter(Context context, List<FileBean> data){
+    public  FirstFragAdapter(final Context context, List<FileBean> data){
        this.context=context;
        this.data=data;
-        popuViewBottom=LayoutInflater.from(context).inflate(R.layout.popubottom,null);
-        popupWindowBottom=new PopupWindow(popuViewBottom, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-       popupWindowBottom.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#f5f5f5")));
+        popuView=LayoutInflater.from(context).inflate(R.layout.firstpopubottom,null);
+      tvdel= (TextView) popuView.findViewById(R.id.delete);
+        tvdel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog=new AlertDialog.Builder(context).setTitle("警告!").setMessage("确认删除吗").setPositiveButton("确定",null).setNegativeButton("取消",null).setIcon(R.mipmap.ic_launcher).create();
+                dialog.show();
+            }
+        });
+        popupWindow= new PopupWindow(popuView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      popupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#f5f5f5")));
     }
 
     public void setCheckMode(boolean checkMode) {
@@ -73,45 +89,48 @@ public class SecondFragAdapter extends BaseAdapter {
         }
 
           holder.tv_filename.setText(data.get(position).name);
-        holder.iv_operate.setVisibility(View.GONE);
+        holder.iv_operate.setVisibility(View.VISIBLE);
         holder.cb_check.setVisibility(View.GONE);
-        holder.tv_sender.setText(data.get(position).sender);
+        holder.tv_sender.setText("");
         if (data.get(position).isFile){
-            holder.cb_check.setVisibility(View.VISIBLE);
+            holder.iv_operate.setVisibility(View.VISIBLE);
             holder.iv_icon.setImageResource(R.mipmap.com_pdf_icon);
         }else{
-            holder.cb_check.setVisibility(View.GONE);
+            holder.iv_operate.setVisibility(View.GONE);
             holder.iv_icon.setImageResource(R.mipmap.com_folder_icon);
         }
 
+        if (checkMode&&data.get(position).isFile) {
+            holder.cb_check.setVisibility(View.VISIBLE);
+            holder.iv_operate.setVisibility(View.GONE);
+        }
+        holder.iv_operate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FileDialog dialog=new FileDialog(context,data.get(position).name);
+
+                dialog.show();
+            }
+        });
         holder.cb_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    data.get(position).isChecked=true;
-                    popupWindowBottom.showAtLocation(parent, Gravity.BOTTOM,0,0);
-            }else {
-                    data.get(position).isChecked=false;
-                    int count=0;
-                    for (int i=0 ;i<data.size();i++){
-                            if (data.get(i).isChecked)
-                                count++;
+                int count=0;
+                data.get(position).isChecked=isChecked;
+                for (FileBean bean:data) {
 
-                    }
-                    if (count==0)
-                        popupWindowBottom.dismiss();
-
-
+                    if(bean.isChecked)
+                       count++;
                 }
+                if (count>0)
+                    popupWindow.showAtLocation(parent,Gravity.BOTTOM,0,0);
+                else
+                    popupWindow.dismiss();
+
 
             }
-
         });
-        holder.cb_check.setChecked(data.get(position).isChecked);
-
-
-
-
+    holder.cb_check.setChecked(data.get(position).isChecked);
 
         return convertView;
     }

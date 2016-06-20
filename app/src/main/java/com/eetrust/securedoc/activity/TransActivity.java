@@ -1,10 +1,10 @@
-package securedoc.eetrust.com.chenlong;
+package com.eetrust.securedoc.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import securedoc.eetrust.com.chenlong.R;
+import com.eetrust.securedoc.R;
 
 /**
  * Created by eetrust on 16/6/13.

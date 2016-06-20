@@ -1,6 +1,5 @@
-package securedoc.eetrust.com.chenlong.fragment;
+package com.eetrust.securedoc.fragment;
 
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,15 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
+
+import com.eetrust.securedoc.R;
+import com.eetrust.securedoc.adapter.SecondFragAdapter;
+import com.eetrust.securedoc.bean.FileBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import securedoc.eetrust.com.chenlong.R;
-import securedoc.eetrust.com.chenlong.adapter.SecondFragAdapter;
-import securedoc.eetrust.com.chenlong.bean.FileBean;
 
 /**
  * Created by android on 2016/6/16.

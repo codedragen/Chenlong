@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong.adapter;
+package com.eetrust.securedoc.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.eetrust.securedoc.R;
+
 import java.util.List;
 
-import securedoc.eetrust.com.chenlong.R;
 
 /**
  * Created by eetrust on 16/6/14.

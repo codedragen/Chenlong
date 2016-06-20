@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong.bean;
+package com.eetrust.securedoc.bean;
 
 /**
  * Created by android on 2016/6/17.

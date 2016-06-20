@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong;
+package com.eetrust.securedoc.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,14 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.eetrust.securedoc.R;
+import com.eetrust.securedoc.adapter.RecyclePersonAdapter;
+import com.eetrust.securedoc.adapter.RecyclerDocAdapter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import securedoc.eetrust.com.chenlong.R;
-import securedoc.eetrust.com.chenlong.adapter.RecyclePersonAdapter;
-import securedoc.eetrust.com.chenlong.adapter.RecyclerDocAdapter;
 
 /**
  * Created by eetrust on 16/6/14.

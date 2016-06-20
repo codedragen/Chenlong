@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong;
+package securedoc.eetrust.com.eetrust;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

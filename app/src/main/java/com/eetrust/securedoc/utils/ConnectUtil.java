@@ -1,11 +1,8 @@
-package securedoc.eetrust.com.chenlong.utils;
+package com.eetrust.securedoc.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
-
-import java.util.List;
 
 /**
  * Created by android on 2016/6/16.

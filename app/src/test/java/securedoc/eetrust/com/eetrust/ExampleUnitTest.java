@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong;
+package securedoc.eetrust.com.eetrust;
 
 import org.junit.Test;
 

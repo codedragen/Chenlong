@@ -1,12 +1,10 @@
-package securedoc.eetrust.com.chenlong.utils;
+package com.eetrust.securedoc.utils;
 
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import okhttp3.OkHttpClient;
@@ -15,10 +13,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -30,6 +26,7 @@ public class HttpControler {
     private  HttpControler(){
       client =new OkHttpClient();
         utlis=XMLUtlis.getInstance();
+
     }
 
       public  static class  HttpHolder{
@@ -42,7 +39,6 @@ public class HttpControler {
     }
 
     public <T> Observable<T> sendGetRequest(final String url, Class<T> c){
-
        return  Observable.create(new Observable.OnSubscribe<T>() {
 
            @Override
@@ -52,8 +48,6 @@ public class HttpControler {
                   Response response= client.newCall(request).execute();
                  ResponseBody body  = response.body();
                 String result= body.string();
-
-
                } catch (IOException e){
                    subscriber.onError(e);
                }
@@ -62,10 +56,7 @@ public class HttpControler {
        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
     public  Observable sendPostRequest(final String url, final RequestBody body, final int flag){
-
         return  Observable.create(new Observable.OnSubscribe<Map<String,Object>>() {
-
-
             @Override
             public void call(Subscriber<? super Map<String,Object>> subscriber) {
                 Request request=null;
@@ -76,12 +67,11 @@ public class HttpControler {
                     String result= body.string();
                     Map<String,Object> o=utlis.xml2Obj(result,flag);
                      subscriber.onNext(o);
-
                 } catch (IOException e){
                     subscriber.onError(e);
-                } catch (IllegalAccessException e) {
-                    subscriber.onError(e);
                 } catch (XmlPullParserException e) {
+                    subscriber.onError(e);
+                } catch (IllegalAccessException e) {
                     subscriber.onError(e);
                 } catch (InstantiationException e) {
                     subscriber.onError(e);
@@ -92,5 +82,25 @@ public class HttpControler {
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+    public  Observable test(final String url, final RequestBody body) {
+        return Observable.create(new Observable.OnSubscribe<Map<String, Object>>() {
+            @Override
+            public void call(Subscriber<? super Map<String, Object>> subscriber) {
+                Request request = null;
 
+                request = new Request.Builder().url(url).post(body).build();
+                Response response = null;
+                try {
+                    response = client.newCall(request).execute();
+                    ResponseBody body = response.body();
+                    String result = body.string();
+                    Log.i("RESULT",result);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 }

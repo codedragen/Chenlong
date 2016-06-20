@@ -1,41 +1,32 @@
-package securedoc.eetrust.com.chenlong;
+package com.eetrust.securedoc.activity;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Process;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.DynamicDrawableSpan;
-import android.text.style.ImageSpan;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
-import org.xmlpull.v1.XmlPullParserException;
+import com.eetrust.securedoc.R;
+import com.eetrust.securedoc.utils.ConnectUtil;
+import com.eetrust.securedoc.utils.HttpControler;
+import com.eetrust.securedoc.utils.XMLUtlis;
 
-import java.io.IOException;
+import java.util.Map;
 
 import okhttp3.FormBody;
-import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import rx.Observable;
-import rx.functions.Action1;
-import securedoc.eetrust.com.chenlong.bean.UserInfo;
-import securedoc.eetrust.com.chenlong.utils.ConnectUtil;
-import securedoc.eetrust.com.chenlong.utils.HttpControler;
-import securedoc.eetrust.com.chenlong.utils.XMLUtlis;
+import rx.Subscriber;
 
 /**
  * Created by eetrust on 16/6/15.
@@ -44,24 +35,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btn_login;
     private Toolbar toolbar;
     private ImageView iv_ispwdshow;
-    SpannableString spannableString;
-    HttpControler controler;
-    EditText et_username,et_pwd;
-    public String xml="<resultInfo>" +
-            "<result>1</result>" +
-            "<loginName>shen</loginName>" +
-            "<userName>陈龙</userName>" +
-            "<configdential >机密</configdential>" +
-            "<email>598516810@qq.com</email>" +
-            "<phone>15179839187</phone>" +
-            "<error>0</error>" +
-            "</resultInfo>";
-  XMLUtlis utils=XMLUtlis.getInstance();
+    private HttpControler controler;
+    private  EditText et_username,et_pwd;
+    private LinearLayout rootview;
+    private static final String HOST="http://10.3.43.249/securedoc";
+    private static final String LOGIN_URL=HOST+"/clientInterface/clientLogin.do";
+
+    private Observable<Map<String,Object>> observable;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_login);
+        rootview=(LinearLayout) findViewById(R.id.login_root);
         btn_login=(Button)findViewById(R.id.login);
         et_username= (EditText) findViewById(R.id.username);
         et_pwd= (EditText) findViewById(R.id.pwd);
@@ -71,13 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         toolbar=(Toolbar)findViewById(R.id.login_toolbar);
         toolbar.inflateMenu(R.menu.login_menu);
         toolbar.setOnMenuItemClickListener(this);
-        spannableString=new SpannableString("f}无网络链接");
-        Drawable drawable=getResources().getDrawable(R.mipmap.ic_launcher);
-        drawable.setBounds(0,0,50,50);
-        ImageSpan span=new ImageSpan(drawable);
-        spannableString.setSpan(span,0,2, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-     controler=HttpControler.getInstance();
-
+        controler= HttpControler.getInstance();
 
 
     }
@@ -87,10 +67,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.login:
                 if (ConnectUtil.isConnenct(this)) {
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish();
+                    if (et_pwd.getText().toString()==null||"".equals(et_pwd.getText().toString())||"".equals(et_username.getText().toString())||et_username.getText().toString()==null){
+                        Snackbar.make(rootview,"用户名或密码不能为空",Snackbar.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    RequestBody body=new FormBody.Builder().addEncoded("loginType","pwd").addEncoded("userName",et_username.getText().toString()).add("passWord",et_pwd.getText().toString()).add("version","3").build();
+                    observable=controler.sendPostRequest(LOGIN_URL,body, XMLUtlis.LOGIN);
+                    observable.subscribe(new Subscriber<Map<String, Object>>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(Map<String, Object> map) {
+                           if ("1".equals(map.get("result"))){
+                               startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                               finish();
+                           }else{
+                               Snackbar.make(rootview,(String)(map.get("error")),Snackbar.LENGTH_LONG).show();
+                           }
+                        }
+                    });
                 }else {
-                    AlertDialog dialog=new AlertDialog.Builder(this).setTitle("警告").setMessage(spannableString).setPositiveButton("确定",null).setNegativeButton("取消",null).create();
+                    AlertDialog dialog=new AlertDialog.Builder(this).setTitle("警告").setMessage("无网络连接，将进入离线模式").setPositiveButton("确定",null).setNegativeButton("取消",null).create();
                     dialog.show();
                 }
                 break;
@@ -113,7 +119,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId()==R.id.set){
             startActivity(new Intent(this,SettingActivity.class));
-
         }
         return true;
     }

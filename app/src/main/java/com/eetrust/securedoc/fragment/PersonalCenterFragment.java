@@ -1,38 +1,24 @@
-package securedoc.eetrust.com.chenlong.fragment;
+package com.eetrust.securedoc.fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Process;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.DynamicDrawableSpan;
-import android.text.style.ImageSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
+
+import com.eetrust.securedoc.activity.LoginActivity;
+import com.eetrust.securedoc.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import securedoc.eetrust.com.chenlong.LoginActivity;
-import securedoc.eetrust.com.chenlong.MainActivity;
-import securedoc.eetrust.com.chenlong.R;
 
 /**
  * Created by eetrust on 16/6/12.

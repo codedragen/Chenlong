@@ -1,4 +1,4 @@
-package securedoc.eetrust.com.chenlong.bean;
+package com.eetrust.securedoc.bean;
 
 import java.util.List;
 
