@@ -31,7 +31,17 @@ public class XMLUtlis {
         return XMLUtilsHolder.instance;
     }
 
-
+    /**
+     *
+     * @param string 要解析的xml字符串
+     * @param flag 标识符，根据不同的标识符调用不同的解析方法
+     * @return
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws XmlPullParserException
+     * @throws NoSuchFieldException
+     * @throws IOException
+     */
     public Map<String, Object> xml2Obj(String string, int flag) throws IllegalAccessException, InstantiationException, XmlPullParserException, NoSuchFieldException, IOException {
         Map<String, Object> map = null;
         switch (flag) {
@@ -45,7 +55,7 @@ public class XMLUtlis {
         return map;
     }
 
-
+    //普通的数据解析
     private Map<String, Object> norMalResult(String result) throws XmlPullParserException, IOException {
         Map map = new HashMap<String, Object>();
         parser.setInput(new StringReader(result));
@@ -67,7 +77,7 @@ public class XMLUtlis {
 
     }
 
-
+    //分享接口的数据解析
     private Map<String, Object> shareResult(String result) throws XmlPullParserException {
         Map<String, Object> map = new HashMap<String, Object>();
         List<Map<String, String>> list = null;

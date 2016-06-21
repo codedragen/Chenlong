@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Created by eetrust on 16/6/12.
  */
-public class SecondFragment extends Fragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
+public class ShareFragment extends Fragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
     private View root;
    private PopupWindow popupWindowTop;
     private View popuViewTop,popuViewBottom;

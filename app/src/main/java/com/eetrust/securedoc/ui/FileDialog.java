@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
-import securedoc.eetrust.com.eetrust.R;
+import com.eetrust.securedoc.R;
+
 
 /**
  * Created by long on 2016/6/10.

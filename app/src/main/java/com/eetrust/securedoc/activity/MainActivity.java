@@ -8,17 +8,17 @@ import android.view.WindowManager;
 import android.widget.RadioGroup;
 
 import com.eetrust.securedoc.R;
-import com.eetrust.securedoc.fragment.FirstFragment;
+import com.eetrust.securedoc.fragment.DocumentsFragment;
 import com.eetrust.securedoc.fragment.MyDocFragment;
 import com.eetrust.securedoc.fragment.PersonalCenterFragment;
-import com.eetrust.securedoc.fragment.SecondFragment;
+import com.eetrust.securedoc.fragment.ShareFragment;
 
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup tab_layout;
-    private FirstFragment firstFragment;
-    private SecondFragment secondFragment;
+    private DocumentsFragment firstFragment;
+    private ShareFragment secondFragment;
 
     private PersonalCenterFragment personalCenterFragment;
     private MyDocFragment mydocFragment;
@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tab_layout = (RadioGroup) findViewById(R.id.tab_layout);
         tab_layout.check(R.id.tab_first);
         if(firstFragment==null)
-        firstFragment = new FirstFragment();
+        firstFragment = new DocumentsFragment();
         if (secondFragment==null)
-        secondFragment = new SecondFragment();
+        secondFragment = new ShareFragment();
         if (personalCenterFragment==null)
         personalCenterFragment = new PersonalCenterFragment();
         if (mydocFragment==null)

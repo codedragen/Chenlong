@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Created by long on 2016/6/10.
  */
-public class FirstFragAdapter extends BaseAdapter {
+public class DocumentsAdapter extends BaseAdapter {
     private final Context context;
     private final List<FileBean> data;
     private  boolean checkMode;
@@ -37,7 +37,7 @@ public class FirstFragAdapter extends BaseAdapter {
     TextView tvdel;
     private AlertDialog dialog;
 
-    public  FirstFragAdapter(final Context context, List<FileBean> data){
+    public DocumentsAdapter(final Context context, List<FileBean> data){
        this.context=context;
        this.data=data;
         popuView=LayoutInflater.from(context).inflate(R.layout.firstpopubottom,null);
