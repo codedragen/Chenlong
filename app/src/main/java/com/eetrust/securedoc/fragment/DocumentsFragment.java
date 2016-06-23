@@ -1,5 +1,6 @@
 package com.eetrust.securedoc.fragment;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.eetrust.securedoc.R;
+import com.eetrust.securedoc.activity.DetailActivty;
 import com.eetrust.securedoc.adapter.DocumentsAdapter;
 import com.eetrust.securedoc.bean.FileBean;
 import com.eetrust.securedoc.http.HttpControler;
@@ -29,14 +32,15 @@ import rx.functions.Action1;
 /**
  * Created by long on 2016/6/10.
  */
-public class DocumentsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
+public class DocumentsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener, AdapterView.OnItemClickListener {
     View root;
     private ListView lv;
     private SwipeRefreshLayout refresh;
     private Toolbar toolbar;
     private DocumentsAdapter adapter;
     private static final String HOST="http://10.3.43.249/securedoc";
-    private static final String DOCUMENTS=HOST+"/clientInterface/clientLogin.do?method=update_pwd";
+    private static final String DOCUMENTS=HOST+"/clientInterface/clientLogin.do?loginType=update_pwd";
+    private static final String DEPTTREE="http://10.3.43.249/securedoc/clientInterface/clientInterface/clientQuery.do?loginType=query_deptTree";
     private List<FileBean> data;
    private HttpControler controler;
     private FormBody body;
@@ -49,8 +53,8 @@ public class DocumentsFragment extends Fragment implements SwipeRefreshLayout.On
         data = new ArrayList<FileBean>();
         controler=HttpControler.getInstance(getActivity());
         //RequestBody body=new FormBody.Builder().addEncoded("startTime",0+"").add("loginName","shen").add("type","2").build();
-        body=new FormBody.Builder().add("oldPwd","abcd1234").add("newPwd","1234567").build();
-        Observable observable= controler.test(DOCUMENTS,body);
+        body=new FormBody.Builder().add("deptID","4").add("isShowUser","1").build();
+        Observable observable= controler.test(DEPTTREE,body);
         observable.subscribe(new Action1() {
             @Override
             public void call(Object o) {
@@ -83,6 +87,7 @@ public class DocumentsFragment extends Fragment implements SwipeRefreshLayout.On
         toolbar.setOnMenuItemClickListener(this);
         adapter = new DocumentsAdapter(getActivity(), data);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(this);
         return root;
     }
 
@@ -116,5 +121,14 @@ public class DocumentsFragment extends Fragment implements SwipeRefreshLayout.On
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+       if( data.get(position).isFile){
+           Intent intent=new Intent(getActivity(), DetailActivty.class);
+           intent.putExtra("title",data.get(position).name);
+           startActivity(intent);
+       }
     }
 }

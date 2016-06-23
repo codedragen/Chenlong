@@ -69,34 +69,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.login:
                 if (ConnectUtil.isConnenct(this)) {
-                    if (et_pwd.getText().toString() == null || "".equals(et_pwd.getText().toString()) || "".equals(et_username.getText().toString()) || et_username.getText().toString() == null) {
-                        Snackbar.make(rootview, "用户名或密码不能为空", Snackbar.LENGTH_LONG).show();
-                        return;
-                    }
-
-                    RequestBody body = new FormBody.Builder().addEncoded("loginType", "pwd").addEncoded("userName", et_username.getText().toString()).add("passWord", et_pwd.getText().toString()).add("version", "3").build();
-                    observable = controler.sendPostRequest(LOGIN_URL, body, XMLUtlis.LOGIN);
-                    observable.subscribe(new Subscriber<Map<String, Object>>() {
-                        @Override
-                        public void onCompleted() {
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            Log.e("ERROR", e.toString());
-                        }
-
-                        @Override
-                        public void onNext(Map<String, Object> map) {
-                            if ("1".equals(map.get("result"))) {
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                finish();
-                            } else {
-                                Snackbar.make(rootview, (String) (map.get("error")), Snackbar.LENGTH_LONG).show();
-                            }
-                        }
-                    });
+//                    if (et_pwd.getText().toString() == null || "".equals(et_pwd.getText().toString()) || "".equals(et_username.getText().toString()) || et_username.getText().toString() == null) {
+//                        Snackbar.make(rootview, "用户名或密码不能为空", Snackbar.LENGTH_LONG).show();
+//                        return;
+//                    }
+//
+//                    RequestBody body = new FormBody.Builder().addEncoded("loginType", "pwd").addEncoded("userName", et_username.getText().toString()).add("passWord", et_pwd.getText().toString()).add("version", "3").build();
+//                    observable = controler.sendPostRequest(LOGIN_URL, body, XMLUtlis.LOGIN);
+//                    observable.subscribe(new Subscriber<Map<String, Object>>() {
+//                        @Override
+//                        public void onCompleted() {
+//
+//                        }
+//
+//                        @Override
+//                        public void onError(Throwable e) {
+//                            Log.e("ERROR", e.toString());
+//                        }
+//
+//                        @Override
+//                        public void onNext(Map<String, Object> map) {
+//                            if ("1".equals(map.get("result"))) {
+//                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                                finish();
+//                            } else {
+//                                Snackbar.make(rootview, (String) (map.get("error")), Snackbar.LENGTH_LONG).show();
+//                            }
+//                        }
+//                    });
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                               finish();
                 } else {
                     AlertDialog dialog = new AlertDialog.Builder(this).setTitle("警告").setMessage("无网络连接，将进入离线模式").setPositiveButton("确定", null).setNegativeButton("取消", null).create();
                     dialog.show();
